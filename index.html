@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ریاضیست | نبرد کهکشانی اعداد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+      body, button, input, textarea, select, h1, h2, h3, h4, h5, h6 {
+        font-family: 'Vazirmatn', system-ui, sans-serif !important;
+      }
+      
+      body {
+        background-color: #020617;
+        color: #f8fafc;
+        overflow-x: hidden;
+        user-select: none;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      /* Animated Starfield */
+      .stars-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        background: radial-gradient(circle at bottom, #0f172a 0%, #020617 100%);
+      }
+
+      .star {
+        position: absolute;
+        background: white;
+        border-radius: 50%;
+        opacity: 0.5;
+        animation: blink var(--duration) infinite ease-in-out;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 1; transform: scale(1.2); }
+      }
+
+      .nebula {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+        filter: blur(80px);
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      /* Advanced Glassmorphism */
+      .glass-panel {
+        background: rgba(15, 23, 42, 0.7);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+      }
+
+      .glass-card-hover {
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      }
+      .glass-card-hover:hover {
+        background: rgba(30, 41, 59, 0.8);
+        border-color: rgba(56, 189, 248, 0.4);
+        transform: translateY(-5px) scale(1.01);
+        box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.3);
+      }
+
+      .neon-border {
+        position: relative;
+      }
+      .neon-border::after {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        background: linear-gradient(45deg, #3b82f6, transparent, #8b5cf6);
+        z-index: -1;
+        border-radius: inherit;
+        opacity: 0.3;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+
+  <link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.561.0",
+    "gsap": "https://esm.sh/gsap@^3.14.2",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="./assets/index-BpfN2Zpi.js"></script>
+</head>
+  <body>
+    <div class="stars-container" id="stars"></div>
+    <div id="root"></div>
+    <script>
+      // Generate stars
+      const container = document.getElementById('stars');
+      for (let i = 0; i < 150; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        const size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+        container.appendChild(star);
+      }
+      // Add a couple of nebulas
+      for (let i = 0; i < 3; i++) {
+        const nebula = document.createElement('div');
+        nebula.className = 'nebula';
+        nebula.style.left = `${Math.random() * 80}%`;
+        nebula.style.top = `${Math.random() * 80}%`;
+        if(i === 1) nebula.style.background = 'radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%)';
+        container.appendChild(nebula);
+      }
+    </script>
+</body>
+</html>
